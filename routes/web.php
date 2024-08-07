@@ -22,6 +22,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin', 'prefix'=>'admin'], fun
 
     Route::group(['namespace'=>'Post', 'prefix'=>'posts'], function (){
         Route::get('/', 'IndexController')->name('admin.post.index');
+        Route::get('/create', 'CreateController')->name('admin.post.create');
     });
 
     Route::group(['namespace'=>'User', 'prefix'=>'users'], function (){
@@ -30,6 +31,9 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin', 'prefix'=>'admin'], fun
 
     Route::group(['namespace'=>'Category', 'prefix'=>'categories'], function (){
         Route::get('/', 'IndexController')->name('admin.category.index');
+        Route::post('/', 'StoreController')->name('admin.category.store');
+        Route::patch('/{category}', 'UpdateController')->name('admin.category.update');
+        Route::delete('/{category}', 'DestroyController')->name('admin.category.delete');
     });
 
     Route::group(['namespace'=>'Tag', 'prefix'=>'tags'], function (){
